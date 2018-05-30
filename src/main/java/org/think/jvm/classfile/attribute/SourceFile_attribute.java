@@ -1,0 +1,21 @@
+package org.think.jvm.classfile.attribute;
+
+import org.think.jvm.classfile.Attribute;
+import org.think.jvm.classfile.ClassFileReader;
+
+import java.io.IOException;
+
+/**
+ * @see com.sun.tools.classfile.SourceFile_attribute
+ * @author lixiaobin
+ * @since 2017/3/24
+ */
+public class SourceFile_attribute extends Attribute {
+    private byte[] sourcefile_index = new byte[2];
+
+    public SourceFile_attribute(ClassFileReader classFileReader, int attribute_name_index, int attribute_length) throws IOException {
+        super(attribute_name_index,attribute_length);
+    }
+
+}
+

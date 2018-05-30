@@ -1,0 +1,48 @@
+package org.think.jvm.instructions.references;
+
+import org.think.jvm.Visitor;
+import org.think.jvm.instructions.base.Index16Instruction;
+import org.think.jvm.rtad.OperandStack;
+import org.think.jvm.rtad.heap.*;
+
+/*
+*获取指定类的实例域,并将其值压入栈顶
+*@author lixiaobin
+*/
+public class GETFIELD extends Index16Instruction {
+    public void execute(Visitor visitor){
+        super.execute(visitor);
+        Method currentMethod = visitor.getFrame().getMethod();
+        Clazz currentClazz = currentMethod.clazz;
+        ConstantPool constantPool = currentClazz.getConstantPool();
+        FieldRef fieldRef = (FieldRef)constantPool.getConstant(index);
+        Field field = fieldRef.resolvedField();
+
+        String descriptor = field.getDescriptor();
+        Integer id = field.soltId;
+        OperandStack operandStack = visitor.getFrame().getStack();
+        ClassObject ref= (ClassObject) operandStack.popRef();
+        Solts fields = ref.getFields();
+        switch (descriptor){
+            case "Z":
+            case "B":
+            case "C":
+            case "S":
+            case "I":
+                operandStack.pushInt(fields.getInt(id));
+                break;
+            case "J":
+                operandStack.pushLong(fields.getLong(id));
+                break;
+            case "F":
+                operandStack.pushFloat(fields.getFloat(id));
+                break;
+            case "D":
+                operandStack.pushDouble(fields.getDouble(id));
+                break;
+            case "Ljava/lang/String":
+                operandStack.pushRef(fields.getRef(id));
+                break;
+        }
+    }
+}
