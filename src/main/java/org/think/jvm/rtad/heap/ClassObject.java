@@ -6,7 +6,7 @@ package org.think.jvm.rtad.heap;
  */
 public class ClassObject {
     private Clazz clazz;
-    private Solts fields;
+    private Object fields;
     private Object extra;
     public ClassObject(){
 
@@ -30,7 +30,7 @@ public class ClassObject {
     }
 
     public Solts getFields() {
-        return fields;
+        return (Solts)fields;
     }
 
     public void setFields(Solts fields) {
@@ -44,4 +44,9 @@ public class ClassObject {
     public void setExtra(Object extra) {
         this.extra = extra;
     }
+
+//    @Override
+//    public String toString() {
+//        return fields.toString();
+//    }
 }

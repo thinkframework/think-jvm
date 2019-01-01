@@ -11,7 +11,7 @@ public class FLOAD extends Index8Instruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Float value = visitor.getFrame().getStack().popFloat();
-        visitor.getFrame().getLocalVars().setFloat(index,value);
+        Float value = visitor.getFrame().getLocalVars().getFloat(index);
+        visitor.getFrame().getStack().pushFloat(value);
     }
 }

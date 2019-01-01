@@ -18,8 +18,8 @@ public class Solt {
         this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return value.toString();
-    }
+//    @Override
+//    public String toString() {
+//        return value.toString();
+//    }
 }

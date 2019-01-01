@@ -11,14 +11,16 @@ public class DCMPG extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Long v2 = visitor.getFrame().getStack().popLong();
-        Long v1 = visitor.getFrame().getStack().popLong();
+        Double v2 = visitor.getFrame().getStack().popDouble();
+        Double v1 = visitor.getFrame().getStack().popDouble();
         if(v1 > v2){
             visitor.getFrame().getStack().pushInt(1);
         }else if (v1 == v2){
             visitor.getFrame().getStack().pushInt(0);
-        }else{
+        }else if (v1 < v2){
             visitor.getFrame().getStack().pushInt(-1);
+        }else{
+            visitor.getFrame().getStack().pushInt(1);
         }
     }
 }

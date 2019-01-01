@@ -1,5 +1,7 @@
 package org.think.jvm.classfile;
 
+import org.think.jvm.classfile.attribute.SourceFile_attribute;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -186,5 +188,14 @@ public class ClassFile {
 
     public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
+    }
+
+    public String getSourceFile(){
+//        for(Attribute attribute : attributes.attrs){
+//            if(attribute instanceof SourceFile_attribute){
+//                return attribute.
+//            }
+//        }
+        return "UnKnow";
     }
 }

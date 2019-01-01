@@ -1,19 +1,16 @@
 package org.think.jvm.classpath;
 
-import org.think.jvm.classfile.ClassFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Enumeration;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
 
 /**
  * @author lixiaobin
  * @since 2017/3/24
  */
-public class ZipEntry extends Entity {
+public class ZipEntry implements Entity {
     String path;
     public ZipEntry(){
 
@@ -37,5 +34,10 @@ public class ZipEntry extends Entity {
         }
 
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return path == null ? "" : new File(path).getAbsolutePath();
     }
 }

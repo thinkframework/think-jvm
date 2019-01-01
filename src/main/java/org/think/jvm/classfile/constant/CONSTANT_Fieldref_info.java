@@ -15,9 +15,4 @@ public class CONSTANT_Fieldref_info extends CPRefInfo {
     public CONSTANT_Fieldref_info(ConstantPool constantPool, ClassFileReader classFileReader) throws IOException {
         super(constantPool, classFileReader,CONSTANT_Fieldref);
     }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

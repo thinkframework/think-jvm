@@ -66,7 +66,7 @@ public class Code_attribute extends Attribute {
         return attributes;
     }
 
-    class Exception_data{
+    public class Exception_data{
         public final int start_pc;
         public final int end_pc;
         public final int handler_pc;
@@ -77,6 +77,22 @@ public class Code_attribute extends Attribute {
             this.end_pc = var1.readUnsignedShort();
             this.handler_pc = var1.readUnsignedShort();
             this.catch_type = var1.readUnsignedShort();
+        }
+
+        public int getStart_pc() {
+            return start_pc;
+        }
+
+        public int getEnd_pc() {
+            return end_pc;
+        }
+
+        public int getHandler_pc() {
+            return handler_pc;
+        }
+
+        public int getCatch_type() {
+            return catch_type;
         }
     }
 }

@@ -25,7 +25,7 @@ public class CHECKCAST extends Index16Instruction {
         ConstantPool constantPool = currentClazz.getConstantPool();
         ClassRef classRef = (ClassRef)constantPool.getConstant(index);
         Clazz clazz = classRef.resolvedClass();
-        if(ref.isInstanceOf(clazz)){
+        if(!ref.isInstanceOf(clazz)){
             throw new VMException("java.lang.ClassCastException");
         }
     }

@@ -35,7 +35,9 @@ public class LDC extends Index8Instruction {
                 operandStack.pushRef(constant.getObject().toString());
                 break;
             case Constant.CONSTANT_Class:
-                operandStack.pushRef(constant.getObject());
+                ClassRef classRef = (ClassRef)constant;
+                ClassObject classObject = classRef.resolvedClass().getClazzObject();
+                operandStack.pushRef(classObject);
                 break;
             default:
                 throw new VMException("LDC");

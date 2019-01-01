@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @since 2017/3/24
  */
 public class Attributes implements Iterable{
-    Attribute[] attrs;
+    public Attribute[] attrs;
 
     public Attributes(ClassFileReader classFileReader) throws IOException {
         int attrs_count = classFileReader.readUnsignedShort();

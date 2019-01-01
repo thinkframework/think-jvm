@@ -20,12 +20,12 @@ public class CONSTANT_Utf8_info extends CPInfo {
         this.value = classFileReader.readUTF();
     }
 
-
     @Override
     public Object getConstantValue() {
         return value;
     }
-//    @Override
+
+    @Override
     public String toString() {
         return value;
     }

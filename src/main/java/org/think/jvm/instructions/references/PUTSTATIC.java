@@ -11,7 +11,6 @@ import org.think.jvm.rtad.heap.*;
 */
 public class PUTSTATIC extends Index16Instruction {
     public void execute(Visitor visitor){
-        super.execute(visitor);
         Method currentMethod = visitor.getFrame().getMethod();
         Clazz currentClazz = currentMethod.clazz;
         ConstantPool constantPool = currentClazz.getConstantPool();
@@ -23,11 +22,12 @@ public class PUTSTATIC extends Index16Instruction {
             clazz.init(visitor.getFrame().getThread(),clazz);
             return;
         }
+        super.execute(visitor);
         String descriptor = field.getDescriptor();
         Integer id = field.soltId;
         Solts staticVars = clazz.getStaticVars();
         OperandStack operandStack = visitor.getFrame().getStack();
-        switch (descriptor){
+        switch (descriptor.substring(0,1)){
             case "Z":
             case "B":
             case "C":
@@ -48,7 +48,7 @@ public class PUTSTATIC extends Index16Instruction {
                 Double aDouble = operandStack.popDouble();
                 staticVars.setDouble(id,aDouble);
                 break;
-            case "Ljava/lang/String":
+            case "L":
                 staticVars.setRef(id,operandStack.popRef());
                 break;
         }

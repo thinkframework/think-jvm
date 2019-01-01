@@ -2,6 +2,7 @@ package org.think.jvm.classpath;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
@@ -24,8 +25,43 @@ public class ClazzPathTest {
     public void testUserClassPath(){
         String path = System.getProperty("user.dir")+ File.separator+"target"+File.separator+"test-classes";
         ClazzPath clazzPath = ClazzPath.parse(null,path);
-        byte[] bytes = clazzPath.readClass("classes.book.ch05.MyObject");
+        byte[] bytes = clazzPath.readClass("classes.MyObject");
         assertNotNull(bytes);
+    }
+
+
+
+    @Test
+    public void test(){
+        ClazzPath clazzPath = ClazzPath.parse();
+        byte[] bytes = clazzPath.readClass("java.lang.Object");
+        Assert.assertNotNull(bytes);
+    }
+
+
+    @Test
+    public void testWithJre(){
+        ClazzPath clazzPath = ClazzPath.parse();
+        byte[] bytes = clazzPath.readClass("java.lang.Object");
+        Assert.assertNotNull(bytes);
+    }
+
+    @Test
+    public void testWithJreAndClassPath(){
+        ClazzPath clazzPath = ClazzPath.parse();
+        byte[] bytes = clazzPath.readClass("java.lang.Object");
+        Assert.assertNotNull(bytes);
+    }
+
+
+    @Test
+    public void testClassPath(){
+//        String path = System.getProperty("user.dir")+ File.separator+"target"+File.separator+"test-classes";
+        String path = System.getProperty("user.dir")+ File.separator+"lib";
+        ClazzPath clazzPath = ClazzPath.parse(null,path);
+        log.debug("BootClassPath:"+clazzPath.getBootClassPath());
+        log.debug("ExtClassPath:"+clazzPath.getExtClassPath());
+        log.debug("UserClassPath:"+clazzPath.getUserClassPath());
     }
 
     @Test

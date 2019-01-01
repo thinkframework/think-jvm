@@ -24,14 +24,13 @@ public class INVOKEINTERFAC extends Instruction {
         Frame frame = visitor.getFrame();
         ConstantPool constantPool = frame.getMethod().getClazz().getConstantPool();
         InterfaceMemberRef methodRef = (InterfaceMemberRef)constantPool.getConstant(index);
-//        Clazz clazz = methodRef.resolvedClass();
+        Clazz clazz = methodRef.resolvedClass();
         Method method = methodRef.resolvedInterfaceMethod();
-        Object object = frame.getStack().getRefFromTop(method.argSlotcount-1);
+        ClassObject object = (ClassObject)frame.getStack().getRefFromTop(method.argSlotcount-1);
         if(object == null){
             throw new VMException("java.lang.NullPointException");
         }
-        Method methodToBeInvoked = method;
-//        LookupMethodInClass(clazz.superClazz,method.getName(),method.getDescriptor());
+        Method methodToBeInvoked = LookupMethodInClass(object.getClazz(),method.getName(),method.getDescriptor());
         if("println".equals(methodRef.getName())){
             OperandStack operandStack = visitor.getFrame().getStack();
             log.info(operandStack.popSolt());
@@ -40,8 +39,19 @@ public class INVOKEINTERFAC extends Instruction {
         }
     }
 
-//    @Override
-//    public String toString() {
-//        return "Instruction{}";
-//    }
+
+    private Method LookupMethodInClass(Clazz clazz, String name, String descriptor) {
+        for(Method method : clazz.getMethods()){
+            if(method.getName().equals(name)){// && field.type_index.equals(type_index)){
+                return method;
+            }
+        }
+        if(clazz.getSuperClazz() != null){
+            Method method;
+            if((method = LookupMethodInClass(clazz.getSuperClazz(),name,descriptor)) != null){
+                return method;
+            }
+        }
+        return null;
+    }
 }

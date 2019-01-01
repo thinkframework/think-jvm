@@ -19,28 +19,36 @@ public class INVOKESPECIAL extends Index16Instruction {
     public void execute(Visitor visitor) {
         super.execute(visitor);
         Frame frame = visitor.getFrame();
+        Clazz currentClazz = frame.getMethod().getClazz();
         ConstantPool constantPool = frame.getMethod().getClazz().getConstantPool();
         MethodRef methodRef = (MethodRef)constantPool.getConstant(index);
         Clazz clazz = methodRef.resolvedClass();
         Method method = methodRef.resolvedMethod();
         Object object = frame.getStack().getRefFromTop(method.argSlotcount-1);
         if(object == null){
-            throw new VMException("java.lang.NullPointException");
+            frame.getThread().popFrame();
+            return;
+//            throw new VMException("java.lang.NullPointException");
         }
         Method methodToBeInvoked = method;
-//        LookupMethodInClass(clazz.superClazz,method.getName(),method.getDescriptor());
+        if(currentClazz.isSuper() && clazz.isSuperClassOf(currentClazz) && !"<init>".equals(method.getName())){
+            LookupMethodInClass(currentClazz.getSuperClazz(),method.getName(),method.getDescriptor());
+        }
         invokeMethod(frame,methodToBeInvoked);
     }
 
-
-//    public Method LookupMethodInClass(Clazz clazz,String name,String descriptor) {
-//        for c := class; c != nil; c = c.superClass {
-//            for _, method := range c.methods {
-//                if method.name == name && method.descriptor == descriptor {
-//                    return method
-//                }
-//            }
-//        }
-//        return nil
-//    }
+    private Method LookupMethodInClass(Clazz clazz, String name, String descriptor) {
+        for(Method method : clazz.getMethods()){
+            if(method.getName().equals(name)){// && field.type_index.equals(type_index)){
+                return method;
+            }
+        }
+        if(clazz.getSuperClazz() != null){
+            Method method;
+            if((method = LookupMethodInClass(clazz.getSuperClazz(),name,descriptor)) != null){
+                return method;
+            }
+        }
+        return null;
+    }
 }

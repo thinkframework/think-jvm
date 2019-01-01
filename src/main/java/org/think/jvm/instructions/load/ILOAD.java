@@ -11,7 +11,7 @@ public class ILOAD extends Index8Instruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Integer value = visitor.getFrame().getStack().popInt();
-        visitor.getFrame().getLocalVars().setInt(index,value);
+        Integer value = visitor.getFrame().getLocalVars().getInt(index);
+        visitor.getFrame().getStack().pushInt(value);
     }
 }

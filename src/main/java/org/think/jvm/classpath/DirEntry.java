@@ -7,7 +7,7 @@ import java.util.List;
  * @author lixiaobin
  * @since 2017/3/24
  */
-public class DirEntry extends Entity {
+public class DirEntry implements Entity {
     String path;
     public DirEntry(){
 
@@ -34,4 +34,8 @@ public class DirEntry extends Entity {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return path == null ? "" : new File(path).getAbsolutePath();
+    }
 }

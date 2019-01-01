@@ -1,5 +1,12 @@
 package org.think.jvm;
 
+import classes.ArrayDemo;
+import classes.BubbleSortTest;
+import classes.FibonacciTest;
+import classes.GaussTest;
+import classes.InvokeDemo;
+import classes.MyObject;
+import classes.StringTest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
@@ -13,22 +20,22 @@ import java.io.*;
  * @since 2017/3/24
  */
 public class MainTest {
-    Log log = LogFactory.getLog(getClass());
-    String classpath;
-    @Before
-    public void setup(){
-        classpath = System.getProperty("user.dir")+ File.separator+"target"+File.separator+"test-classes";
-        log.debug(classpath);
-    }
-
-    @Test
-    public void testClassFile() throws IOException {
-        new Main().start("-cp="+ classpath,ClassFileTest.class.getName());
-    }
-
+//    Log log = LogFactory.getLog(getClass());
+//    String classpath;
+//    @Before
+//    public void setup(){
+//        classpath = System.getProperty("user.dir")+ File.separator+"target"+File.separator+"test-classes";
+//        log.debug(classpath);
+//    }
+//
+//    @Test
+//    public void testClassFile() throws IOException {
+//        new Main().start("-cp="+ classpath,ClassFileTest.class.getName());
+//    }
+//
 //    @Test
 //    public void testFunction() throws IOException {
-//        new Main().start("-cp="+ classpath,GaussTest.class.getName());
+//        new Main().start("-cp="+ classpath, GaussTest.class.getName());
 //    }
 //
 //    @Test
@@ -56,12 +63,12 @@ public class MainTest {
 //
 //    @Test
 //    public void testArray() throws IOException {
-//        new Main().start("-cp="+ classpath,BubbleSortTest.class.getName());
+//        new Main().start("-cp="+ classpath, BubbleSortTest.class.getName());
 //    }
 //
 //
 //    @Test
 //    public void testString() throws IOException {
-//        new Main().start("-cp="+ classpath,StringTest.class.getName());
+//        new Main().start("-cp="+ classpath, StringTest.class.getName());
 //    }
 }

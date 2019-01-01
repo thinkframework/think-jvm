@@ -1,6 +1,10 @@
 package org.think.jvm.rtad.heap;
 
+import org.think.jvm.classfile.Attribute;
 import org.think.jvm.classfile.ClassFileMethod;
+import org.think.jvm.classfile.attribute.Code_attribute;
+import org.think.jvm.classfile.attribute.Exceptions_attribute;
+import org.think.jvm.rtad.Thread;
 
 /**
  * @author lixiaobin
@@ -11,6 +15,9 @@ public class Method extends ClassMember{
     public Integer maxLocals;
     public byte[] code;
     public Integer argSlotcount;
+
+    private ExceptionTable exceptionTable;
+
     public Method(){
 
     }
@@ -20,52 +27,70 @@ public class Method extends ClassMember{
         maxStack = classFileMethod.getMax_stack();
         maxLocals = classFileMethod.getMax_locals();
         code = classFileMethod.getCode();
-        calcArgSlotCount();
+
+        MethodDescriptor methodDescriptor = new MethodDescriptor(descriptor);
+        calcArgSlotCount(methodDescriptor);
         if(accessFlags.isNative()){
-            injectCodeAttribute();
+            injectCodeAttribute(methodDescriptor.getReturnType());
         }
+
+        this.exceptionTable = new ExceptionTable(clazz,classFileMethod);
     }
 
-    public void injectCodeAttribute(){
+    public void injectCodeAttribute(String returnType){
         maxStack = 4;
         maxLocals = argSlotcount;
-        switch (descriptor){
+        switch (returnType.substring(0,1)){
             case "V":
-                code = new byte[]{(byte) 0xfe,(byte) 0xb1};
+                code = new byte[]{(byte) 0xfe,(byte) 0xb1};//return
                 break;
             case "D":
-                code = new byte[]{(byte) 0xfe,(byte) 0xaf};
+                code = new byte[]{(byte) 0xfe,(byte) 0xaf};//dreturn
                 break;
             case "F":
-                code = new byte[]{(byte) 0xfe,(byte) 0xae};
+                code = new byte[]{(byte) 0xfe,(byte) 0xae};//freturn
                 break;
             case "J":
-                code = new byte[]{(byte) 0xfe,(byte) 0xfe};
+                code = new byte[]{(byte) 0xfe,(byte) 0xad};//lreturn
                 break;
-            case "H":
-                code = new byte[]{(byte) 0xfe,(byte) 0xb0};
+            case "L":
+            case "[":
+                code = new byte[]{(byte) 0xfe,(byte) 0xb0};//areturn
                 break;
             default:
-                code = new byte[]{(byte) 0xfe,(byte) 0xac};
+                code = new byte[]{(byte) 0xfe,(byte) 0xac};//ireturn
                 break;
         }
     }
 
-    public void calcArgSlotCount(){
+    public void calcArgSlotCount(MethodDescriptor methodDescriptor){
         argSlotcount = 0;
-        String s = "";
-        for(int i=0;i<descriptor.length();i++){
-            if('(' == descriptor.charAt(i)){
-                continue;
-            }
-            s+=descriptor.charAt(i);
-            if(')' == descriptor.charAt(i)){
-                break;
+        String[] parameterTypes = methodDescriptor.getParameterTypes();
+        if(parameterTypes != null && parameterTypes.length > 0) {
+            for (String parameterType : parameterTypes) {
+                argSlotcount++;
+                if ("J".equals(parameterType) || "D".equals(parameterType)) {
+                    argSlotcount++;
+                }
+
             }
         }
         if(!accessFlags.isStatic()){//this
             argSlotcount++;
         }
+    }
+
+    public Integer findExceptionHandler(Clazz clazz,Integer pc){
+        ExceptionHandler handler = exceptionTable.findExceptionHandler(clazz,pc);
+        if(handler != null){
+            return handler.getHandlerPc();
+        }
+        return -1;
+    }
+
+    public Integer getLineNumber(Integer pc){
+//        for(int i=0;l)
+        return -1;
     }
 
     public Integer getMaxStack() {
@@ -100,3 +125,4 @@ public class Method extends ClassMember{
         this.argSlotcount = argSlotcount;
     }
 }
+

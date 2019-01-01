@@ -1,7 +1,9 @@
 package org.think.jvm.rtad.heap;
 
+import org.think.jvm.classfile.Attribute;
 import org.think.jvm.classfile.CPInfo;
 import org.think.jvm.classfile.ClassFile;
+import org.think.jvm.classfile.attribute.SourceFile_attribute;
 import org.think.jvm.classfile.constant.*;
 import org.think.jvm.exceptions.VMException;
 import org.think.jvm.rtad.Frame;
@@ -27,6 +29,9 @@ public class Clazz {
     private Solts staticVars;
     private Boolean initStared =false;
     private ClassObject clazzObject;
+
+    private String sourceFile;
+
     Clazz(){
 
     }
@@ -35,9 +40,19 @@ public class Clazz {
     public Clazz(AccessFlags accessFlags, String name, ClazzLoader clazzLoader, Clazz superClazz, Clazz[] interfaces, Boolean initStared){
         this.accessFlags = accessFlags;
         this.name = name;
-        this.supertClassName = supertClassName;
-        this.interfaceNames = interfaceNames;
-        this.constantPool = constantPool;
+        this.clazzLoader = clazzLoader;
+        if(superClazz != null) {
+            this.superClazz = superClazz;
+            this.supertClassName = superClazz.name;
+        }
+        if(interfaces != null) {
+            this.interfaces = interfaces;
+            String[] interfaceNames = new String[interfaces.length];
+            for (int i = 0; i < interfaces.length; i++) {
+                interfaceNames[i] = interfaces[i].name;
+            }
+            this.interfaceNames = interfaceNames;
+        }
         this.initStared = initStared;
     }
 
@@ -49,6 +64,8 @@ public class Clazz {
         constantPool = newConstantPool(classFile);
         fields = newFields(classFile);
         methods = newMethods(classFile);
+
+//        sourceFile = getSourceFile();
     }
 
     public ConstantPool newConstantPool(ClassFile classFile) throws VMException{
@@ -174,6 +191,8 @@ public class Clazz {
         return clazzLoader.loadClass(arrayClassName);
     }
 
+
+
     private String getArrayClassName(){
         if(name.charAt(0) == '['){
             return name;
@@ -201,15 +220,82 @@ public class Clazz {
         return "L"+name+";";
     }
 
+
+    public Clazz ComponentClass(){
+        String componentClassName = getComponentClassName();
+        return clazzLoader.loadClass(componentClassName);
+    }
+
+    private String getComponentClassName(){
+        return toClassName(name.substring(1));
+    }
+
+    public String toClassName(String componentClassName) {
+        if(name.charAt(0) == '['){
+            return  componentClassName;
+        }
+        if(name.charAt(0) == 'L'){
+            return  componentClassName.substring(1,componentClassName.length()-1);
+        }
+        switch (componentClassName){
+            case "void":
+                return "V";
+            case "boolean":
+                return "Z";
+            case "byte":
+                return "B";
+            case "shot":
+                return "S";
+            case "int":
+                return "I";
+            case "long":
+                return "J";
+            case "char":
+                return "C";
+            case "float":
+                return "F";
+            case "double":
+                return "D";
+        }
+        throw new VMException("");
+    }
+
     public Boolean isAssignableFrom(Clazz clazz){
         if(this == clazz){
             return true;
         }
-        if(!accessFlags.isInterface()){
-            return isSubClassOf(clazz);
+        if(!this.isArray()) {
+            if (!accessFlags.isInterface()) {
+                return isSubClassOf(clazz);
+            } else {
+                return isImplements(clazz);
+            }
         }else{
-            return isImplements(clazz);
+            if(!clazz.isArray()){
+
+            }else{
+                return this.ComponentClass() == clazz.ComponentClass() || clazz.ComponentClass().isAssignableFrom(this.ComponentClass());
+            }
         }
+        //TODO
+        return false;
+    }
+
+    public Boolean isArray(){
+        return name.charAt(0) == '[';
+    }
+
+    public Boolean isSuper(){
+        return accessFlags.isSuper();
+    }
+
+    public Boolean isSuperClassOf(Clazz clazz){
+        for(Clazz aclazz = clazz.superClazz; aclazz != null; aclazz = aclazz.superClazz){
+            if(this == aclazz){
+                return true;
+            }
+        }
+        return false;
     }
 
     public Boolean isSubClassOf(Clazz clazz){
@@ -385,5 +471,45 @@ public class Clazz {
 
     public void setClazzObject(ClassObject clazzObject) {
         this.clazzObject = clazzObject;
+    }
+
+
+    public String javaName() {
+        return name.replaceAll("/",".");
+    }
+
+    public Method getMethod(String name,String descriptor){
+        for(Method method : methods){
+            if(method.getName().equals(name) && method.getDescriptor().equals(descriptor)){
+                return method;
+            }
+        }
+        return null;
+    }
+
+    public Method getStaticMethod(String name,String descriptor){
+        for(Method method : methods){
+            if(method.getName().equals(name) && method.getDescriptor().equals(descriptor)){
+                return method;
+            }
+        }
+        return null;
+    }
+
+    public String getSourceFile(ClassFile classFile){
+        for(Attribute attribute : classFile.getAttributes().attrs){
+            if(attribute instanceof SourceFile_attribute){
+//                return attribute.
+            }
+        }
+        return "Unknow";
+    }
+
+    public String getSourceFile() {
+        return sourceFile;
+    }
+
+    public void setSourceFile(String sourceFile) {
+        this.sourceFile = sourceFile;
     }
 }

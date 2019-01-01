@@ -21,12 +21,13 @@ public class CONSTANT_Class_info extends CPInfo {
     }
 
     @Override
+    public Object getConstantValue() {
+        return cp.get(name_index);
+    }
+
+    @Override
     public String toString() {
         return cp.get(name_index).toString();
     }
 
-    @Override
-    public Object getConstantValue() {
-        return cp.get(name_index);
-    }
 }

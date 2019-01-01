@@ -34,6 +34,18 @@ public class OperandStack {
         return solts.pop();
     }
 
+    public void pushBoolean(Boolean value){
+        solts.add(new Solt(value));
+    }
+
+    public Boolean popBoolean(){
+        Object value = solts.pop().getValue();
+        if(value instanceof Integer){
+            return (int)value != 0;
+        }
+        return (Boolean) value;
+    }
+
     public void pushByte(Byte value){
         solts.add(new Solt(value));
     }
@@ -48,7 +60,11 @@ public class OperandStack {
     }
 
     public Character popChar(){
-        return (Character)solts.pop().getValue();
+        Object value = solts.pop().getValue();
+        if(value instanceof Integer){
+            return (char)(int)value;
+        }
+        return (Character)value;
     }
 
 
@@ -72,9 +88,11 @@ public class OperandStack {
 
     public void pushLong(Long value){
         solts.add(new Solt(value));
+        solts.add(new Solt(value,true));
     }
 
     public Long popLong(){
+        solts.pop().getValue();
         return (Long) solts.pop().getValue();
     }
 
@@ -88,19 +106,28 @@ public class OperandStack {
 
     public void pushDouble(Double value){
         solts.add(new Solt(value));
+        solts.add(new Solt(value,true));
     }
 
     public Double popDouble(){
+        solts.pop().getValue();
         return (Double) solts.pop().getValue();
     }
 
 
     public void pushSolt(Solt value){
         solts.add(value);
+//        if (value.getValue() instanceof Long || value.getValue() instanceof Double){
+//            solts.add(new Solt(value,true));
+//        }
     }
 
-    public Solt popSolt(){
-        return solts.pop();
+    public Solt popSolt() {
+        Solt value = solts.pop();
+//        if(value.getW()){
+//            value = solts.pop();
+//        }
+        return value;
     }
 
 
@@ -115,6 +142,10 @@ public class OperandStack {
 
     public Object getRefFromTop(Integer index){
         return solts.get(solts.size()-1-index).getValue();
+    }
+
+    public void clear(){
+        solts.clear();
     }
 
     public Stack<Solt> getSolts() {

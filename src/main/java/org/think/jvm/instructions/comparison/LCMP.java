@@ -18,7 +18,7 @@ public class LCMP extends NoOperandsInstruction {
         }else if (v1 == v2){
             visitor.getFrame().getStack().pushInt(0);
         }else{
-            visitor.getFrame().getStack().pushInt(-11);
+            visitor.getFrame().getStack().pushInt(-1);
         }
     }
 }

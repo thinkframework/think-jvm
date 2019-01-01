@@ -14,7 +14,8 @@ public class IRETURN extends NoOperandsInstruction {
         super.execute(visitor);
         Frame currentFrame = visitor.getFrame().getThread().popFrame();
         Frame invokerFrame = visitor.getFrame().getThread().topFrame();
-        Integer retVal = currentFrame.getStack().popInt();
-        invokerFrame.getStack().pushInt(0);
+
+        Integer retVal = (int)currentFrame.getStack().popInt();
+        invokerFrame.getStack().pushInt(retVal);
     }
 }

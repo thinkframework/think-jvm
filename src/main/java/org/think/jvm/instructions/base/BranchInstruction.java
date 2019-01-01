@@ -20,9 +20,6 @@ public class BranchInstruction extends Instruction {
     protected void branch(Visitor visitor){
         Integer pc = visitor.getFrame().getThread().getPC();
         Integer nextPC = pc + offset;
-        if(nextPC > 255){
-            nextPC = 4;
-        }
         visitor.getFrame().setNextPC(nextPC);
     }
 }

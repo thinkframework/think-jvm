@@ -1,5 +1,8 @@
 package org.think.jvm.rtad;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.*;
 
 /**
@@ -7,10 +10,25 @@ import java.util.*;
  * @since 2017/3/24
  */
 public class LocalVarsTest {
-    public void test(){
-        LocalVars localVars = new LocalVars();
-//        localVars.setInt();
-//        localVars.
-        java.util.Stack stack = new java.util.Stack();
+    @Test
+    public void testInt(){
+        LocalVars localVars = new LocalVars(10);
+        localVars.setInt(0,10);
+        Assert.assertEquals(10l,localVars.getInt(0).longValue());
+    }
+
+    @Test
+    public void testLong(){
+        LocalVars localVars = new LocalVars(10);
+        localVars.setLong(0,10l);
+        Assert.assertEquals(10l,localVars.getLong(0).longValue());
+    }
+
+
+    @Test
+    public void testDouble(){
+        LocalVars localVars = new LocalVars(10);
+        localVars.setDouble(0,10d);
+        Assert.assertEquals(10d,localVars.getDouble(0).doubleValue(),0);
     }
 }

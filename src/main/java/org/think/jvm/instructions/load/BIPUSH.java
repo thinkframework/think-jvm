@@ -16,7 +16,7 @@ public class BIPUSH extends Instruction {
 	}
 
 	public void execute(Visitor visitor){
-		log.debug(value);
+		super.execute(visitor);
 		visitor.getFrame().getStack().pushInt(value);
 	}
 }

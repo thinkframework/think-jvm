@@ -53,7 +53,12 @@ public class Thread {
         this.stack = stack;
     }
 
-    public Boolean empty(){
+    public Boolean isStackEmpty(){
         return stack.empty();
+    }
+
+
+    public void stackClear(){
+        stack.clear();
     }
 }

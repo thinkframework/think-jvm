@@ -22,6 +22,7 @@ public class NEW extends Index16Instruction {
             clazz.init(visitor.getFrame().getThread(),clazz);
             return;
         }
+        super.execute(visitor);
         if(clazz.getAccessFlags().isInterface() || clazz.getAccessFlags().isAbstract()){
             throw new VMException("java.lang.InstantiationError");
         }

@@ -1,5 +1,7 @@
 package org.think.jvm.rtad;
 
+import org.think.jvm.rtad.heap.ClassObject;
+
 import java.util.Stack;
 
 /**
@@ -20,6 +22,7 @@ public class LocalVars {
             solts.setSize(maxLocals);
         }
     }
+
 
     public Integer getInt(Integer index){
         return (Integer) solts.get(index).getValue();
@@ -59,6 +62,11 @@ public class LocalVars {
     public Object getRef(Integer index){
         Solt solt = solts.get(index);
         return solt == null ? null :solt.getValue();
+    }
+
+
+    public ClassObject getThis(){
+        return (ClassObject) getRef(0);
     }
 
     public void setRef(Integer index,Object value){

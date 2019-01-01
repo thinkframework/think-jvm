@@ -48,6 +48,15 @@ public class ClassFileMethod extends CliassFileMember {
         }
     }
 
+    public Attribute Exceptions_attribute(){
+        for(Attribute attribute : attributes.attrs){
+            if(attribute instanceof Exceptions_attribute){
+                return attribute;
+            }
+        }
+        return null;
+    }
+
     public String getName(ConstantPool constantPool) {
         return constantPool.getUTF8Value(this.name_index);
     }

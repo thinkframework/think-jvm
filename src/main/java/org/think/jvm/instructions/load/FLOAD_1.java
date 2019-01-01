@@ -11,7 +11,6 @@ public class FLOAD_1 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor) {
         Float value = visitor.getFrame().getLocalVars().getFloat(1);
-        log.debug(value);
         visitor.getFrame().getStack().pushFloat(value);
     }
 }
