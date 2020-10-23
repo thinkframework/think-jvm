@@ -13,7 +13,7 @@ public class LREM extends NoOperandsInstruction {
         super.execute(visitor);
         Long v2 = visitor.getFrame().getStack().popLong();
         Long v1 = visitor.getFrame().getStack().popLong();
-        Long result = v1 + v2;
+        Long result = v1 % v2;
         visitor.getFrame().getStack().pushLong(result);
     }
 }

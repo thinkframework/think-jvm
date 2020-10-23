@@ -11,7 +11,7 @@ public class ALOAD extends Index8Instruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Object object = visitor.getFrame().getStack().popRef();
-        visitor.getFrame().getLocalVars().setRef(index,object);
+        Object object = visitor.getFrame().getLocalVars().getRef(index);
+        visitor.getFrame().getStack().pushRef(object);
     }
 }

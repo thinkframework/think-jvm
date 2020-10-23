@@ -60,7 +60,7 @@ public class ExecutionVisitor implements Visitor{
     }
 
 
-    public int readUnit32() {
+    public int readInt32() {
         int ch1 = code[pc++];
         int ch2 = code[pc++];
         int ch3 = code[pc++];
@@ -68,13 +68,18 @@ public class ExecutionVisitor implements Visitor{
         return ((ch1 << 24) + (ch2 << 16) + (ch3 << 8) + (ch4 << 0));
     }
 
-
-    public int readInts32() {
-        return 0;
+    public int readUnit32() {
+        int ch1 = code[pc++] & 255;
+        int ch2 = code[pc++] & 255;
+        int ch3 = code[pc++] & 255;
+        int ch4 = code[pc++] & 255;
+        return ((ch1 << 24) + (ch2 << 16) + (ch3 << 8) + (ch4 << 0));
     }
 
-
     public int skipPadding() {
+        while (pc %4 != 0){
+            pc++;
+        }
         return 0;
     }
 

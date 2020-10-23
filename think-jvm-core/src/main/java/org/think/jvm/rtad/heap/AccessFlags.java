@@ -81,6 +81,15 @@ public class AccessFlags {
         return (value & ACC_FINAL) != 0;
     }
 
+
+    public final void isSuper(final boolean flag) {
+        setFlag(ACC_SUPER, flag);
+    }
+
+    public final boolean isSuper() {
+        return (value & ACC_SUPER) != 0;
+    }
+
     public final void isSynchronized(final boolean flag) {
         setFlag(ACC_SYNCHRONIZED, flag);
     }

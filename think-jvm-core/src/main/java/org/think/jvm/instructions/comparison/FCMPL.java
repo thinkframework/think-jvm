@@ -11,14 +11,16 @@ public class FCMPL extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Long v2 = visitor.getFrame().getStack().popLong();
-        Long v1 = visitor.getFrame().getStack().popLong();
+        Float v2 = visitor.getFrame().getStack().popFloat();
+        Float v1 = visitor.getFrame().getStack().popFloat();
         if(v1 > v2){
             visitor.getFrame().getStack().pushInt(1);
         }else if (v1 == v2){
             visitor.getFrame().getStack().pushInt(0);
+        }else if (v1 < v2){
+            visitor.getFrame().getStack().pushInt(-1);
         }else{
-            visitor.getFrame().getStack().pushInt(-11);
+            visitor.getFrame().getStack().pushInt(-1);
         }
     }
 }

@@ -25,7 +25,7 @@ public class PUTFIELD extends Index16Instruction {
 //        Solts staticVars = clazz.staticVars;
         OperandStack operandStack = visitor.getFrame().getStack();
         ClassObject value;
-        switch (descriptor){
+        switch (descriptor.substring(0,1)){
             case "Z":
             case "B":
             case "C":
@@ -62,13 +62,13 @@ public class PUTFIELD extends Index16Instruction {
                 }
                 value.getFields().setDouble(id,aDouble);
                 break;
-            case "Ljava/lang/String":
-                String string = (String)operandStack.popRef();
+            case "L":
+                ClassObject classObject = (ClassObject)operandStack.popRef();
                 value= (ClassObject)operandStack.popRef();
                 if(value == null){
                     throw new VMException("java.lang.NullPointException");
                 }
-                value.getFields().setRef(id,string);
+                value.getFields().setRef(id,classObject);
                 break;
         }
     }

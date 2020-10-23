@@ -11,7 +11,6 @@ public class DLOAD_1 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor) {
         Double value = visitor.getFrame().getLocalVars().getDouble(1);
-        log.debug(value);
         visitor.getFrame().getStack().pushDouble(value);
     }
 }

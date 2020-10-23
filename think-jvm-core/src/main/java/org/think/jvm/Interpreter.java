@@ -2,6 +2,7 @@ package org.think.jvm;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.Instruction;
 import org.think.jvm.instructions.InstructionFactory;
 import org.think.jvm.rtad.*;
@@ -19,24 +20,23 @@ import java.util.Stack;
  */
 public class Interpreter {
     Log log = LogFactory.getLog(getClass());
-    public void interpret(Method method,String[] args) {
-        org.think.jvm.rtad.Thread thread = new org.think.jvm.rtad.Thread();
-        Frame frame = thread.newFrame(method);
-        thread.pushFrame(frame);
-        ClazzLoader clazzLoader = frame.getMethod().getClazz().getClazzLoader();
-        Object value = createArgsArray(clazzLoader,args);
-        frame.getLocalVars().setRef(0,value);
+
+    private static Interpreter instance;
+    private Interpreter(){
+
+    }
+
+    public static Interpreter getInstance(){
+        if(instance == null){
+            instance = new Interpreter();
+        }
+        return instance;
+    }
+
+    public void interpret(Thread thread) {
         loop(thread);
     }
 
-    public Object createArgsArray(ClazzLoader clazzLoader,String[] args){
-        Clazz stringClass =clazzLoader.loadClass("java/lang/String");
-        ArrayObject arrayObject = stringClass.ArrayClass().newArray(args.length);
-        for(int i=0;i<args.length;i++){
-            arrayObject.setRef(i,args[i]);
-        }
-        return arrayObject;
-    }
     public void invokeMethod(Frame invokerFrame, Method method){
         Thread thread = invokerFrame.getThread();
         Frame newFrame = thread.newFrame(method);
@@ -67,20 +67,24 @@ public class Interpreter {
             //执行指令
             inst.execute(visitor);
             debug(frame);
-            }catch (Exception e){
-                debug(frame);
-                log.error("",e);
+            }catch (VMException e){
+                log.error("虚拟机异常",e);
                 break;
             }
         }
 
     }
 
+    /**
+     * 调试信息
+     * @param frame
+     */
     private void debug(Frame frame){
         debugstack(frame);
         debuglocalVars(frame);
     }
-    public void debugstack(Frame frame){
+
+    private void debugstack(Frame frame){
         String s="stack:";
         OperandStack localVars = frame.getStack();
         Stack<Solt> solts = localVars.getSolts();
@@ -92,7 +96,7 @@ public class Interpreter {
         log.debug(s);
     }
 
-    public void debuglocalVars(Frame frame){
+    private void debuglocalVars(Frame frame){
         String s="localVars:";
         LocalVars localVars = frame.getLocalVars();
         Stack<Solt> solts = localVars.getSolts();

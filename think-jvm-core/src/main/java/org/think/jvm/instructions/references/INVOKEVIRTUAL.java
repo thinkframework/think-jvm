@@ -24,15 +24,20 @@ public class INVOKEVIRTUAL extends Index16Instruction {
         MethodRef methodRef = (MethodRef)constantPool.getConstant(index);
         Clazz clazz = methodRef.resolvedClass();
         Method method = methodRef.resolvedMethod();
+        if("println".equals(method.getName())){
+            OperandStack operandStack = visitor.getFrame().getStack();
+            log.info(operandStack.popSolt());
+            return;
+        }
         Object object = frame.getStack().getRefFromTop(method.argSlotcount-1);
         if(object == null){
             throw new VMException("java.lang.NullPointException");
         }
         Method methodToBeInvoked = method;
 //        LookupMethodInClass(clazz.superClazz,method.getName(),method.getDescriptor());
-        if("println".equals(methodRef.getName())){
+        if("println".equals(method.getName())){
             OperandStack operandStack = visitor.getFrame().getStack();
-            log.info(operandStack.popSolt());
+            System.out.println(operandStack.popSolt());
         }else{
             invokeMethod(frame,methodToBeInvoked);
         }

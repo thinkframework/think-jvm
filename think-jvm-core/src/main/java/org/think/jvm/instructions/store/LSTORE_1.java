@@ -11,7 +11,6 @@ public class LSTORE_1 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         Long value = visitor.getFrame().getStack().popLong();
-        log.debug(value);
         visitor.getFrame().getLocalVars().setLong(1,value);
     }
 }

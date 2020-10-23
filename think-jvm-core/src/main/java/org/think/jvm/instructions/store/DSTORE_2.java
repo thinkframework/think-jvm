@@ -11,7 +11,6 @@ public class DSTORE_2 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         Double value = visitor.getFrame().getStack().popDouble();
-        log.debug(value);
         visitor.getFrame().getLocalVars().setDouble(0,value);
     }
 }

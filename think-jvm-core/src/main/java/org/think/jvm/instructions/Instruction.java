@@ -21,8 +21,9 @@ public class Instruction {
     public void accept(org.think.jvm.Visitor visitor){
         //log.debug(this+".accept("+visitor+")");
     }
+
     public void execute(org.think.jvm.Visitor visitor){
-        log.debug("execute()");
+        log.debug(visitor.getFrame().getMethod().getClazz().javaName()+"."+visitor.getFrame().getMethod().getName()+" execute");
     }
 
 
@@ -37,13 +38,13 @@ public class Instruction {
                 newFrame.getLocalVars().setSolt(i, solt);
             }
         }
-        if(method.getAccessFlags().isNative() || "registerNatives".equals(method.getName())){
+        if(method.getAccessFlags().isNative() && "registerNatives".equals(method.getName())){
             thread.popFrame();
         }
     }
 
 //    @Override
 //    public String toString() {
-//        return "Instruction{}";
+//        return this;
 //    }
 }

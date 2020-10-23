@@ -11,9 +11,9 @@ import java.io.File;
  */
 public class ClazzPath {
     Log log = LogFactory.getLog(getClass());
-    Entity bootClassPath;
-    Entity extClassPath;
-    Entity userClassPath;
+    private Entity bootClassPath;
+    private Entity extClassPath;
+    private Entity userClassPath;
     public byte[] readClass(String className){
         className = className.replaceAll("\\.","/")+".class";
         byte[] data;
@@ -47,7 +47,7 @@ public class ClazzPath {
         log.debug("java.home:"+java_home);
         String boot_class_path = java_home + File.separator + "lib"+ File.separator +"*";
         bootClassPath = new WildcardEntry(boot_class_path);
-        String ext_class_path = java_home + File.separator + "lib"+ File.separator +"core"+ File.separator +"*";
+        String ext_class_path = java_home + File.separator + "lib"+ File.separator +"ext"+ File.separator +"*";
         extClassPath = new WildcardEntry(ext_class_path);
     }
 
@@ -55,5 +55,29 @@ public class ClazzPath {
     public void parseUserClassPath(String classPath){
         log.debug("user.dir:"+classPath);
         userClassPath = new DirEntry(classPath);
+    }
+
+    public Entity getBootClassPath() {
+        return bootClassPath;
+    }
+
+    public void setBootClassPath(Entity bootClassPath) {
+        this.bootClassPath = bootClassPath;
+    }
+
+    public Entity getExtClassPath() {
+        return extClassPath;
+    }
+
+    public void setExtClassPath(Entity extClassPath) {
+        this.extClassPath = extClassPath;
+    }
+
+    public Entity getUserClassPath() {
+        return userClassPath;
+    }
+
+    public void setUserClassPath(Entity userClassPath) {
+        this.userClassPath = userClassPath;
     }
 }

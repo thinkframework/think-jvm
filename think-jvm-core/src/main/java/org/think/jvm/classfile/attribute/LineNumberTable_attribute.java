@@ -36,5 +36,9 @@ public class LineNumberTable_attribute extends Attribute {
             inputStream.read(line_number);
         }
     }
+
+    public Integer getLineNumber(Integer pc){
+        return -1;
+    }
 }
 

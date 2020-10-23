@@ -11,7 +11,6 @@ public class FSTORE_1 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         Float value = visitor.getFrame().getStack().popFloat();
-        log.debug(value);
         visitor.getFrame().getLocalVars().setFloat(1,value);
     }
 }

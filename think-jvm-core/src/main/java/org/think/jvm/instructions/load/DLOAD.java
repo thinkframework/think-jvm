@@ -11,7 +11,7 @@ public class DLOAD extends Index8Instruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Double value = visitor.getFrame().getStack().popDouble();
-        visitor.getFrame().getLocalVars().setDouble(index,value);
+        Double value = visitor.getFrame().getLocalVars().getDouble(index);
+        visitor.getFrame().getStack().pushDouble(value);
     }
 }

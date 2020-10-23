@@ -11,9 +11,9 @@ public class LUSHR extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor) {
         super.execute(visitor);
-        Long v2 = visitor.getFrame().getStack().popLong();
+        Integer v2 = visitor.getFrame().getStack().popInt();
         Long v1 = visitor.getFrame().getStack().popLong();
-        Long result = v1 + v2;
+        Long result = v1 >>> v2;
         visitor.getFrame().getStack().pushLong(result);
     }
 }

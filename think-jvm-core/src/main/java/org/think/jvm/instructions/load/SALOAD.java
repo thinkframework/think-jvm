@@ -17,6 +17,5 @@ public class SALOAD extends NoOperandsInstruction {
         Integer value = operandStack.popInt();
         ArrayObject object = (ArrayObject)operandStack.popRef();
         operandStack.pushShort(object.getShort(value));
-        Object o = new byte[1];
     }
 }

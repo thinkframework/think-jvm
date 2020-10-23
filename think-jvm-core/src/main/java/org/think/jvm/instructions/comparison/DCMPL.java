@@ -17,8 +17,10 @@ public class DCMPL extends NoOperandsInstruction {
             visitor.getFrame().getStack().pushInt(1);
         }else if (v1 == v2){
             visitor.getFrame().getStack().pushInt(0);
+        }else if (v1 < v2){
+            visitor.getFrame().getStack().pushInt(-1);
         }else{
-            visitor.getFrame().getStack().pushInt(-11);
+            visitor.getFrame().getStack().pushInt(-1);
         }
     }
 }

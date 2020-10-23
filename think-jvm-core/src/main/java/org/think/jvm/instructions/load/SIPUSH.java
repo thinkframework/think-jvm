@@ -15,6 +15,6 @@ public class SIPUSH extends Instruction {
 	}
 
 	public void execute(Visitor visitor){
-//		visitor.getFrame().getStack().pushInt(value);
+		visitor.getFrame().getStack().pushInt(value);
 	}
 }

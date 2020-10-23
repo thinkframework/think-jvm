@@ -39,11 +39,11 @@ public class MULTIANEWARRAY extends Instruction {
     }
 
     public Object newMultiDimensionalArray(Integer[] counts,Clazz clazz){
-        int count = counts[0];
+        int count = counts.length;
         ArrayObject object = clazz.newArray(count);
         Object[] objects = object.getObjects();
 //        for(int i=0;i<objects.length;i++){
-//            objects[i] = newMultiDimensionalArray()
+//            objects[i] = newMultiDimensionalArray(new Integer[count],clazz.ComponentClass());
 //        }
         return  object;
     }

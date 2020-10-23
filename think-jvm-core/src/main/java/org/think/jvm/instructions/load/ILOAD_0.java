@@ -11,7 +11,6 @@ public class ILOAD_0 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         Integer value = visitor.getFrame().getLocalVars().getInt(0);
-        log.debug(value);
         visitor.getFrame().getStack().pushInt(value);
     }
 }

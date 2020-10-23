@@ -20,10 +20,9 @@ public interface Visitor {
     public int readUInt16();
 
 
+    public int readInt32();
+
     public int readUnit32();
-
-
-    public int readInts32();
 
 
     public int skipPadding();

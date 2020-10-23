@@ -9,7 +9,7 @@ import java.io.File;
  * @since 2017/3/24
  */
 public class WildcardEntry extends CompositeEntry {
-    String path;
+
     public WildcardEntry(){
 
     }
@@ -21,12 +21,9 @@ public class WildcardEntry extends CompositeEntry {
         for(int i=0;i<files.length;i++){
             if(files[i].getAbsolutePath().contains(".jar")) {
                 entities.add(newEntry(files[i].getAbsolutePath()));
+                path+= files[i].getAbsolutePath() + ";";
             }
         }
     }
 
-
-    public byte[] readClass(String className){
-        return super.readClass(className);
-    }
 }

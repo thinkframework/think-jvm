@@ -23,7 +23,7 @@ public class GETFIELD extends Index16Instruction {
         OperandStack operandStack = visitor.getFrame().getStack();
         ClassObject ref= (ClassObject) operandStack.popRef();
         Solts fields = ref.getFields();
-        switch (descriptor){
+        switch (descriptor.substring(0,1)){
             case "Z":
             case "B":
             case "C":
@@ -40,7 +40,8 @@ public class GETFIELD extends Index16Instruction {
             case "D":
                 operandStack.pushDouble(fields.getDouble(id));
                 break;
-            case "Ljava/lang/String":
+            case "L":
+            case "[":
                 operandStack.pushRef(fields.getRef(id));
                 break;
         }

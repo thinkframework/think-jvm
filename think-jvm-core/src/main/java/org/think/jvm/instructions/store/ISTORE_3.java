@@ -11,7 +11,6 @@ public class ISTORE_3 extends NoOperandsInstruction {
     @Override
     public void execute(Visitor visitor){
         Integer value = visitor.getFrame().getStack().popInt();
-        log.debug(value);
         visitor.getFrame().getLocalVars().setInt(3,value);
     }
 }

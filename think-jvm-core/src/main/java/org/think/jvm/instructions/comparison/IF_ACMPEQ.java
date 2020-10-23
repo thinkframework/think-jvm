@@ -11,8 +11,8 @@ public class IF_ACMPEQ extends BranchInstruction {
     @Override
     public void execute(Visitor visitor){
         super.execute(visitor);
-        Integer v2 = visitor.getFrame().getStack().popInt();
-        Integer v1 = visitor.getFrame().getStack().popInt();
+        Object v2 = visitor.getFrame().getStack().popRef();
+        Object v1 = visitor.getFrame().getStack().popRef();
         if(v1 == v2){
             branch(visitor);
         }

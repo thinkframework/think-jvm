@@ -14,9 +14,11 @@ import java.util.Map;
  */
 public class ClazzLoader {
     ClazzPath clazzPath;
+
     //方法区
     Map<String,Clazz> classMap = new HashMap<String,Clazz>();
-    public ClazzLoader(){
+
+    private ClazzLoader(){
 
     }
 
@@ -31,7 +33,7 @@ public class ClazzLoader {
         for(Map.Entry<String,Clazz> entry : classMap.entrySet()){
             Clazz clazz = entry.getValue();
             clazz.setClazzObject(clazzObject.newObject());
-            clazz.getClazzObject().setExtra(clazzObject);
+            clazz.getClazzObject().setExtra(clazz);
         }
     }
 
@@ -88,7 +90,7 @@ public class ClazzLoader {
             }
             Clazz clazzObject = loadClass("java/lang/Class");
             clazz.setClazzObject(clazzObject.newObject());
-            clazz.getClazzObject().setExtra(clazzObject);
+            clazz.getClazzObject().setExtra(clazz);
             return clazz;
         }
 
@@ -231,11 +233,10 @@ public class ClazzLoader {
 
     public void initStaticFinalVar(Clazz clazz, Field field){
         Solts staticVars = clazz.getStaticVars();
-        ConstantPool constantPool = clazz.getConstantPool();
+        ConstantPool cp = clazz.getConstantPool();
         int id = field.soltId;
         String descriptor = field.descriptor;
         Integer index = field.constValueIndex;
-        ConstantPool cp = clazz.getConstantPool();
         switch (descriptor){
             case "Z":
             case "B":

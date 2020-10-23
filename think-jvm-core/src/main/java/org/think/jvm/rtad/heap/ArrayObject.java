@@ -2,6 +2,8 @@ package org.think.jvm.rtad.heap;
 
 import org.think.jvm.rtad.*;
 
+import java.util.Arrays;
+
 /**
  * @author lixiaobin
  * @since 2017/3/29
@@ -96,5 +98,12 @@ public class ArrayObject extends ClassObject{
 
     public void setObjects(Object[] objects) {
         this.objects = objects;
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayObject{" +
+                "objects=" + Arrays.toString(objects) +
+                '}';
     }
 }

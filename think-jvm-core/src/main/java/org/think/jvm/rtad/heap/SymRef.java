@@ -28,9 +28,9 @@ public class SymRef extends Constant{
     public void resolveClassRef(){
         Clazz d = cp.getClazz();
         Clazz c = d.getClazzLoader().loadClass(className);
-//        if(c.isAssignableTo(d)){
-//            throw new VMException("java.lang.IllegalAccessError");
-//        }
+        if(!c.isAssignableTo(d)){
+            throw new VMException("java.lang.IllegalAccessError");
+        }
         this.clazz = c;
     }
 }

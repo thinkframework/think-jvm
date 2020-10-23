@@ -11,7 +11,6 @@ public class ILOAD_3 extends Instruction {
     @Override
     public void execute(Visitor visitor){
         Integer value = visitor.getFrame().getLocalVars().getInt(3);
-        log.debug(value);
         visitor.getFrame().getStack().pushInt(value);
     }
 }
