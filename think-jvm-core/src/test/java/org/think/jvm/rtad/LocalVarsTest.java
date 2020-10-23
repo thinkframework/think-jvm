@@ -3,8 +3,6 @@ package org.think.jvm.rtad;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
-
 /**
  * @author lixiaobin
  * @since 2017/3/24

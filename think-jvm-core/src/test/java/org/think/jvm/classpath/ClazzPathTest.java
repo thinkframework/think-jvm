@@ -1,9 +1,10 @@
 package org.think.jvm.classpath;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
  * @since 2017/3/24
  */
 public class ClazzPathTest {
-    Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(ClazzPathTest.class);
     @Test
     public void testBootClassPath(){
         ClazzPath clazzPath = ClazzPath.parse();

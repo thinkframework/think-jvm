@@ -1,7 +1,5 @@
 package org.think.jvm.util;
 
-import java.io.*;
-
 /**
  * 高位在前
  * @see java.io.DataInputStream

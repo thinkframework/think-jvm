@@ -9,7 +9,9 @@ import org.think.jvm.instructions.extended.*;
 import org.think.jvm.instructions.load.*;
 import org.think.jvm.instructions.match.*;
 import org.think.jvm.instructions.references.*;
-import org.think.jvm.instructions.reserved.*;
+import org.think.jvm.instructions.reserved.BREAKPOINT;
+import org.think.jvm.instructions.reserved.IMPDEP1;
+import org.think.jvm.instructions.reserved.IMPDEP2;
 import org.think.jvm.instructions.stack.*;
 import org.think.jvm.instructions.store.*;
 

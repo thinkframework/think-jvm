@@ -1,7 +1,6 @@
 package org.think.jvm;
 
 import org.think.jvm.classpath.ClazzPath;
-import org.think.jvm.exceptions.VMException;
 import org.think.jvm.jnative.Registry;
 import org.think.jvm.rtad.Frame;
 import org.think.jvm.rtad.Thread;

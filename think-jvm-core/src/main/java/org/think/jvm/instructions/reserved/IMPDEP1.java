@@ -5,7 +5,7 @@ import org.think.jvm.instructions.base.NoOperandsInstruction;
 import org.think.jvm.jnative.Registry;
 import org.think.jvm.jnative.java.lang.InvokeMethod;
 import org.think.jvm.rtad.Frame;
-import org.think.jvm.rtad.heap.*;
+import org.think.jvm.rtad.heap.Method;
 
 /*
 *用于在特定硬件中使用的语言后门

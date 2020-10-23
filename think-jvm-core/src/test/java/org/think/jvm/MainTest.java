@@ -1,20 +1,5 @@
 package org.think.jvm;
 
-import classes.ArrayDemo;
-import classes.BubbleSortTest;
-import classes.FibonacciTest;
-import classes.GaussTest;
-import classes.InvokeDemo;
-import classes.MyObject;
-import classes.StringTest;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.Before;
-import org.junit.Test;
-import org.think.jvm.classfile.ClassFileTest;
-
-import java.io.*;
-
 /**
  * @author lixiaobin
  * @since 2017/3/24

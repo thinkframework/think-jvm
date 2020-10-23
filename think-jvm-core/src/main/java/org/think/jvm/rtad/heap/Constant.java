@@ -1,9 +1,6 @@
 package org.think.jvm.rtad.heap;
 
 
-import java.lang.*;
-import java.lang.Object;
-
 /**
  * @see com.sun.tools.classfile.ConstantPool.CPInfo
  * @author lixiaobin

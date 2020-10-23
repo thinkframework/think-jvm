@@ -26,7 +26,7 @@ public class INVOKEVIRTUAL extends Index16Instruction {
         Method method = methodRef.resolvedMethod();
         if("println".equals(method.getName())){
             OperandStack operandStack = visitor.getFrame().getStack();
-            log.info(operandStack.popSolt());
+            log.info("{}",operandStack.popSolt());
             return;
         }
         Object object = frame.getStack().getRefFromTop(method.argSlotcount-1);

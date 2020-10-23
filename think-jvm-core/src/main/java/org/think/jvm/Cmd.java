@@ -1,7 +1,8 @@
 package org.think.jvm;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.think.jvm.instructions.Instruction;
 
 /**
  * 命令行工具
@@ -9,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Cmd {
 
-    public static Log log = LogFactory.getLog(Cmd.class);
+    private static final Logger log = LoggerFactory.getLogger(Instruction.class);
 
     private String xjre;
     private Boolean helpFlag;

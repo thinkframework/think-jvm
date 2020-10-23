@@ -1,6 +1,5 @@
 package org.think.jvm.instructions.store;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.instructions.base.NoOperandsInstruction;
 import org.think.jvm.rtad.OperandStack;
 import org.think.jvm.rtad.heap.ArrayObject;

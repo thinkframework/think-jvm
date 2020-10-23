@@ -1,11 +1,11 @@
 package org.think.jvm.instructions;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.think.jvm.classfile.ClassFile;
-import org.think.jvm.classfile.ClassFileTest;
 import org.think.jvm.classfile.ClassFileMethod;
+import org.think.jvm.classfile.ClassFileTest;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
  * @since 2017/3/29
  */
 public class InstructionsFactoryTest {
-    Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(InstructionsFactoryTest.class);
     @Test
     public void test() throws IOException{
         InputStream inputStream = ClassFileTest.class.getClassLoader().getResourceAsStream("classes/book/ch05/ClassFileTest.class");
@@ -28,7 +28,7 @@ public class InstructionsFactoryTest {
             byte[] bytes = classFileMethod.getCode();
             for(byte _byte : bytes){
                 try {
-                    log.debug(InstructionFactory.newInstruction(_byte));
+                    log.debug("{}",InstructionFactory.newInstruction(_byte));
                 }catch (Exception e){
                     log.error(e.getMessage(),e);
                 }

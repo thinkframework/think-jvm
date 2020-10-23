@@ -1,9 +1,6 @@
 package org.think.jvm.rtad;
 
 
-import java.io.Serializable;
-import java.util.Arrays;
-
 /**
  * @author lixiaobin
  * @since 2017/3/24

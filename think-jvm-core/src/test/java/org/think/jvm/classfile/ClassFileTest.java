@@ -1,22 +1,21 @@
 package org.think.jvm.classfile;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
-import org.think.jvm.instructions.Instruction;
-import org.think.jvm.instructions.InstructionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
 import static org.junit.Assert.*;
 /**
  * @author lixiaobin
  * @since 2017/3/29
  */
 public class ClassFileTest {
-    Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(ClassFileTest.class);
     @Test
     public void test() throws IOException{
         String path = System.getProperty("user.dir")+ File.separator+"target"+File.separator+"test-classes";

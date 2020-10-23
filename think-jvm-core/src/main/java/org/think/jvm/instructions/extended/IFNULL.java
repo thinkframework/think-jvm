@@ -1,6 +1,5 @@
 package org.think.jvm.instructions.extended;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.instructions.base.BranchInstruction;
 
 /*

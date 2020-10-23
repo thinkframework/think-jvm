@@ -1,7 +1,7 @@
 package org.think.jvm.instructions.load;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.Visitor;
+import org.think.jvm.instructions.Instruction;
 
 /*
 *将一个短整型常量值(-32768~32767)推送至栈顶

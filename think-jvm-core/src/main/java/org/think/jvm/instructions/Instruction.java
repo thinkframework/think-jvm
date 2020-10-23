@@ -1,10 +1,7 @@
 package org.think.jvm.instructions;
 
-import org.apache.bcel.generic.*;
-import org.apache.bcel.generic.Visitor;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.think.jvm.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.think.jvm.rtad.Frame;
 import org.think.jvm.rtad.Solt;
 import org.think.jvm.rtad.Thread;
@@ -17,7 +14,8 @@ import org.think.jvm.rtad.heap.Method;
  * @since 2017/3/24
  */
 public class Instruction {
-    protected Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(Instruction.class);
+
     public void accept(org.think.jvm.Visitor visitor){
         //log.debug(this+".accept("+visitor+")");
     }

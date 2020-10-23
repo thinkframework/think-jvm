@@ -2,7 +2,10 @@ package org.think.jvm.instructions.load;
 
 import org.think.jvm.Visitor;
 import org.think.jvm.instructions.base.Index16Instruction;
-import org.think.jvm.rtad.heap.*;
+import org.think.jvm.rtad.heap.Clazz;
+import org.think.jvm.rtad.heap.Constant;
+import org.think.jvm.rtad.heap.ConstantPool;
+import org.think.jvm.rtad.heap.Method;
 
 /*
 *将int,float或String型常量值从常量池中推送至栈顶(宽索引)

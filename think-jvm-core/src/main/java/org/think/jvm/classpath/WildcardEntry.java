@@ -1,7 +1,5 @@
 package org.think.jvm.classpath;
 
-import org.think.jvm.classfile.ClassFile;
-
 import java.io.File;
 
 /**

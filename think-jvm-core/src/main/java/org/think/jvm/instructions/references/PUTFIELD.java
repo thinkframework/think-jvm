@@ -5,7 +5,6 @@ import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.base.Index16Instruction;
 import org.think.jvm.rtad.OperandStack;
 import org.think.jvm.rtad.heap.*;
-import org.think.jvm.rtad.heap.ClassObject;
 /*
 *为指定的类的实例域赋值
 *@author lixiaobin

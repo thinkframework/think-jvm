@@ -1,6 +1,5 @@
 package org.think.jvm.instructions.references;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.instructions.base.Index16Instruction;
 import org.think.jvm.rtad.OperandStack;
 import org.think.jvm.rtad.heap.ClassRef;

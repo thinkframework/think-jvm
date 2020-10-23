@@ -1,7 +1,7 @@
 package org.think.jvm.instructions.store;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.Visitor;
+import org.think.jvm.instructions.Instruction;
 
 /*
 *将栈顶引用型数值存入第三个局部变量

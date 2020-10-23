@@ -1,7 +1,8 @@
 package org.think.jvm.classpath;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.think.jvm.instructions.Instruction;
 
 import java.io.File;
 
@@ -10,7 +11,7 @@ import java.io.File;
  * @since 2017/3/23.
  */
 public class ClazzPath {
-    Log log = LogFactory.getLog(getClass());
+    private static final Logger log = LoggerFactory.getLogger(Instruction.class);
     private Entity bootClassPath;
     private Entity extClassPath;
     private Entity userClassPath;

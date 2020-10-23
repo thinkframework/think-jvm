@@ -1,7 +1,7 @@
 package org.think.jvm.instructions.load;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.Visitor;
+import org.think.jvm.instructions.Instruction;
 
 /*
 *将第一个引用类型局部变量推送至栈顶

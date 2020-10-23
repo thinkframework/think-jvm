@@ -1,7 +1,6 @@
 package org.think.jvm;
 
 import org.junit.Test;
-import org.think.jvm.Cmd;
 
 public class CmdTest {
     @Test

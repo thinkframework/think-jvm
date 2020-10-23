@@ -1,6 +1,7 @@
 package org.think.jvm.classfile;
 
-import org.think.jvm.classfile.attribute.*;
+import org.think.jvm.classfile.attribute.Code_attribute;
+import org.think.jvm.classfile.attribute.Exceptions_attribute;
 
 import java.io.IOException;
 

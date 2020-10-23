@@ -1,13 +1,5 @@
 package org.think.jvm.rtad.heap;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.think.jvm.Interpreter;
-import org.think.jvm.classpath.ClazzPath;
-import org.think.jvm.exceptions.VMException;
-
-import java.io.File;
-
 /**
  * @author lixiaobin
  * @since 2017/3/24

@@ -1,21 +1,19 @@
 package org.think.jvm.rtad.heap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
-import org.think.jvm.Interpreter;
-import org.think.jvm.classfile.CPInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.think.jvm.classfile.ClassFile;
-import org.think.jvm.classfile.ClassFileField;
-import org.think.jvm.classfile.ClassFileMethod;
 import org.think.jvm.classpath.ClazzPath;
-import org.think.jvm.rtad.Frame;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class ClassTest {
 
-    Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(ClassTest.class);
 
     @Test
     public void test() throws IOException {

@@ -1,10 +1,7 @@
 package org.think.jvm.jnative;
 
-import org.think.jvm.jnative.java.lang.Class;
 import org.think.jvm.jnative.java.lang.InvokeMethod;
-import org.think.jvm.jnative.java.lang.System;
 import org.think.jvm.rtad.Frame;
-import org.think.jvm.rtad.Thread;
 
 import java.util.HashMap;
 import java.util.Map;

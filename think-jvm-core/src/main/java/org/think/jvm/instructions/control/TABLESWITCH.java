@@ -2,7 +2,6 @@ package org.think.jvm.instructions.control;
 
 import org.think.jvm.Visitor;
 import org.think.jvm.instructions.Instruction;
-import org.think.jvm.instructions.base.BranchInstruction;
 
 /*
 *用于switch条件跳转,case值连续(可变长度指令)

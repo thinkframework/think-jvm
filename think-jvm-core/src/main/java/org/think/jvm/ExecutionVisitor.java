@@ -1,9 +1,6 @@
 package org.think.jvm;
 
-import org.think.jvm.Visitor;
 import org.think.jvm.rtad.Frame;
-import org.think.jvm.rtad.LocalVars;
-import org.think.jvm.rtad.OperandStack;
 
 /**
  * @see org.apache.bcel.verifier.structurals.ExecutionVisitor

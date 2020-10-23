@@ -1,15 +1,12 @@
 package org.think.jvm.instructions;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.think.jvm.ExecutionVisitor;
-import org.think.jvm.Interpreter;
 import org.think.jvm.classfile.ClassFile;
-import org.think.jvm.classfile.ClassFileTest;
 import org.think.jvm.classfile.ClassFileMethod;
-import org.think.jvm.classpath.ClazzPath;
-import org.think.jvm.exceptions.VMException;
+import org.think.jvm.classfile.ClassFileTest;
 import org.think.jvm.rtad.Frame;
 import org.think.jvm.rtad.Solt;
 import org.think.jvm.rtad.Thread;
@@ -23,7 +20,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -31,7 +27,7 @@ import static org.junit.Assert.assertTrue;
  * @since 2017/3/29
  */
 public class InstructionsTest {
-    Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(InstructionsTest.class);
     @Test
     public void test() throws IOException{
         InputStream inputStream = ClassFileTest.class.getClassLoader().getResourceAsStream("classes/book/ch05/ClassFileTest.class");
@@ -42,7 +38,7 @@ public class InstructionsTest {
             byte[] bytes = classFileMethod.getCode();
             for(byte _byte : bytes){
                 try {
-                    log.debug(InstructionFactory.newInstruction(_byte));
+                    log.debug("{}",InstructionFactory.newInstruction(_byte));
                 }catch (Exception e){
                     log.error(e.getMessage(),e);
                 }

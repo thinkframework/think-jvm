@@ -1,10 +1,6 @@
 package org.think.jvm.rtad.heap;
 
-import org.think.jvm.classfile.Attribute;
 import org.think.jvm.classfile.ClassFileMethod;
-import org.think.jvm.classfile.attribute.Code_attribute;
-import org.think.jvm.classfile.attribute.Exceptions_attribute;
-import org.think.jvm.rtad.Thread;
 
 /**
  * @author lixiaobin

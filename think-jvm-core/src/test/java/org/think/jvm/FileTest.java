@@ -1,21 +1,20 @@
 package org.think.jvm;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * @author lixiaobin
  * @since 2017/3/24
  */
 public class FileTest {
-    Log log = LogFactory.getLog(getClass());
+    protected static final Logger log = LoggerFactory.getLogger(FileTest.class);
     @Test
     public void test2() throws IOException {
 //        FileInputStream fileInputStream = new FileInputStream("");
@@ -151,9 +150,9 @@ public class FileTest {
 
     @Test
     public void testGetResource(){
-        log.debug(FileTest.class.getResource(""));
-        log.debug(FileTest.class.getResource("/"));
-        log.debug(FileTest.class.getClassLoader().getResource(""));
-        log.debug(FileTest.class.getClassLoader().getResource("/"));
+        log.debug("{}",FileTest.class.getResource(""));
+        log.debug("{}",FileTest.class.getResource("/"));
+        log.debug("{}",FileTest.class.getClassLoader().getResource(""));
+        log.debug("{}",FileTest.class.getClassLoader().getResource("/"));
     }
 }

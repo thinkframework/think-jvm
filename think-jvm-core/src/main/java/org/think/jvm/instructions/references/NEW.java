@@ -3,8 +3,10 @@ package org.think.jvm.instructions.references;
 import org.think.jvm.Visitor;
 import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.base.Index16Instruction;
-import org.think.jvm.rtad.Frame;
-import org.think.jvm.rtad.heap.*;
+import org.think.jvm.rtad.heap.ClassObject;
+import org.think.jvm.rtad.heap.ClassRef;
+import org.think.jvm.rtad.heap.Clazz;
+import org.think.jvm.rtad.heap.ConstantPool;
 
 /*
 *创建一个对象,并将其引用值压入栈顶

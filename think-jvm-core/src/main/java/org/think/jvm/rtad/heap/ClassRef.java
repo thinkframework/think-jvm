@@ -1,6 +1,5 @@
 package org.think.jvm.rtad.heap;
 
-import org.think.jvm.classfile.ClassFile;
 import org.think.jvm.classfile.constant.CONSTANT_Class_info;
 
 /**

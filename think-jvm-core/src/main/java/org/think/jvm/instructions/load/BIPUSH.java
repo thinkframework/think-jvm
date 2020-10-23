@@ -1,7 +1,7 @@
 package org.think.jvm.instructions.load;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.Visitor;
+import org.think.jvm.instructions.Instruction;
 
 /*
 *将单字节的常量值(-128~127)推送至栈顶

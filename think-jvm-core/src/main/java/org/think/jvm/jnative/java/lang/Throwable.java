@@ -4,8 +4,6 @@ import org.think.jvm.jnative.Registry;
 import org.think.jvm.rtad.Frame;
 import org.think.jvm.rtad.heap.ClassObject;
 import org.think.jvm.rtad.heap.Clazz;
-import org.think.jvm.rtad.heap.ClazzLoader;
-import org.think.jvm.rtad.heap.Method;
 
 import java.util.ArrayList;
 import java.util.List;

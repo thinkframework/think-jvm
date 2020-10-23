@@ -4,7 +4,10 @@ import org.think.jvm.Visitor;
 import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.base.Index16Instruction;
 import org.think.jvm.rtad.OperandStack;
-import org.think.jvm.rtad.heap.*;
+import org.think.jvm.rtad.heap.Clazz;
+import org.think.jvm.rtad.heap.Constant;
+import org.think.jvm.rtad.heap.ConstantPool;
+import org.think.jvm.rtad.heap.Method;
 
 /*
 *将long或double型常量值从常量池中推送至栈顶(宽索引)

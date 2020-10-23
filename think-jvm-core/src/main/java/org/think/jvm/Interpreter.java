@@ -1,15 +1,12 @@
 package org.think.jvm;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.Instruction;
 import org.think.jvm.instructions.InstructionFactory;
-import org.think.jvm.rtad.*;
 import org.think.jvm.rtad.Thread;
-import org.think.jvm.rtad.heap.ArrayObject;
-import org.think.jvm.rtad.heap.Clazz;
-import org.think.jvm.rtad.heap.ClazzLoader;
+import org.think.jvm.rtad.*;
 import org.think.jvm.rtad.heap.Method;
 
 import java.util.Stack;
@@ -19,7 +16,7 @@ import java.util.Stack;
  * @since 2017/3/30
  */
 public class Interpreter {
-    Log log = LogFactory.getLog(getClass());
+    private static final Logger log = LoggerFactory.getLogger(Instruction.class);
 
     private static Interpreter instance;
     private Interpreter(){

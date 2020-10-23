@@ -4,10 +4,12 @@ import org.think.jvm.classfile.Attribute;
 import org.think.jvm.classfile.CPInfo;
 import org.think.jvm.classfile.ClassFile;
 import org.think.jvm.classfile.attribute.SourceFile_attribute;
-import org.think.jvm.classfile.constant.*;
+import org.think.jvm.classfile.constant.CONSTANT_Class_info;
+import org.think.jvm.classfile.constant.CONSTANT_Fieldref_info;
+import org.think.jvm.classfile.constant.CONSTANT_InterfaceMethodref_info;
+import org.think.jvm.classfile.constant.CONSTANT_Methodref_info;
 import org.think.jvm.exceptions.VMException;
 import org.think.jvm.rtad.Frame;
-import sun.jvm.hotspot.runtime.VM;
 
 /**
  * @author lixiaobin

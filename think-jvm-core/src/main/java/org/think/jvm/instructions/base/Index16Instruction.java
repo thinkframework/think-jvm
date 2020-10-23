@@ -1,7 +1,7 @@
 package org.think.jvm.instructions.base;
 
-import org.think.jvm.instructions.Instruction;
 import org.think.jvm.Visitor;
+import org.think.jvm.instructions.Instruction;
 
 /**
  * unit16整数

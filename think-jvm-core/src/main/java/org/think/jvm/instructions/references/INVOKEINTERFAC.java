@@ -1,8 +1,8 @@
 package org.think.jvm.instructions.references;
 
+import org.think.jvm.Visitor;
 import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.Instruction;
-import org.think.jvm.Visitor;
 import org.think.jvm.rtad.Frame;
 import org.think.jvm.rtad.OperandStack;
 import org.think.jvm.rtad.heap.*;
@@ -33,7 +33,7 @@ public class INVOKEINTERFAC extends Instruction {
         Method methodToBeInvoked = LookupMethodInClass(object.getClazz(),method.getName(),method.getDescriptor());
         if("println".equals(methodRef.getName())){
             OperandStack operandStack = visitor.getFrame().getStack();
-            log.info(operandStack.popSolt());
+            log.info("{}",operandStack.popSolt());
         }else{
             invokeMethod(frame,methodToBeInvoked);
         }

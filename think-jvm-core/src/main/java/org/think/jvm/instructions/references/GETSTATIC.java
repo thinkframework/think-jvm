@@ -1,7 +1,6 @@
 package org.think.jvm.instructions.references;
 
 import org.think.jvm.Visitor;
-import org.think.jvm.exceptions.VMException;
 import org.think.jvm.instructions.base.Index16Instruction;
 import org.think.jvm.rtad.OperandStack;
 import org.think.jvm.rtad.heap.*;

@@ -1,8 +1,5 @@
 package org.think.jvm.classpath;
 
-import org.think.jvm.classfile.ClassFile;
-import org.think.jvm.rtad.heap.Field;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

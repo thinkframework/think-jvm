@@ -1,7 +1,5 @@
 package org.think.jvm.classfile;
 
-import org.think.jvm.classfile.attribute.SourceFile_attribute;
-
 import java.io.IOException;
 import java.io.InputStream;
 

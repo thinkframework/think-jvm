@@ -1,7 +1,5 @@
 package org.think.jvm.rtad.heap;
 
-import org.think.jvm.rtad.*;
-
 import java.util.Arrays;
 
 /**
