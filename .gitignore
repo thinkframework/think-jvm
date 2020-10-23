@@ -4,6 +4,8 @@
 /target/www/**
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
+**/target/
+**/template/
 
 ######################
 # Node
@@ -141,11 +143,3 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
-
-
-
-######################
-# 代码生成工具
-######################
-!generator/**/*
-
