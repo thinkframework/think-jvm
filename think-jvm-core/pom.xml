@@ -10,7 +10,7 @@
         <relativePath>../think-jvm-parent</relativePath>
     </parent>
 
-    <groupId>org.think</groupId>
+    <groupId>io.github.thinkframework</groupId>
     <artifactId>think-jvm-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

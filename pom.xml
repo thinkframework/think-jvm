@@ -1,16 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
+
     <groupId>io.github.thinkframework</groupId>
     <artifactId>think-jvm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>think-generator</name>
+    <name>think-jvm</name>
     <url>http://maven.apache.org</url>
 
     <description>基于Freemarker的代码生成工具</description>
@@ -21,9 +17,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>https://github.com/think-projects/think-generator.git</connection>
-        <developerConnection>https://github.com/think-projects/think-generator.git</developerConnection>
-        <url>https://github.com/think-projects/think-generator</url>
+        <connection>https://github.com/think-projects/think-jvm.git</connection>
+        <developerConnection>https://github.com/think-projects/think-jvm.git</developerConnection>
+        <url>https://github.com/think-projects/think-jvm</url>
     </scm>
     <developers>
         <developer>
@@ -36,6 +32,7 @@
         <module>think-jvm-dependencies</module>
         <module>think-jvm-parent</module>
         <module>think-jvm-core</module>
+        <module>think-jvm-test-report</module>
     </modules>
 
     <properties>
@@ -46,16 +43,16 @@
         <sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
         <arguments />
         <sonar.organization>think-projects</sonar.organization>
-        <sonar.projectKey>think-generator</sonar.projectKey>
+        <sonar.projectKey>think-jvm</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/think-generator-test-report/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/think-jvm-test-report/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.github.thinkframework</groupId>
-                <artifactId>think-generator-dependencies</artifactId>
+                <artifactId>think-jvm-dependencies</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
