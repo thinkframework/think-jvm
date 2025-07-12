@@ -25,7 +25,7 @@
     </description>
 
     <properties>
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <bcel.version>6.0</bcel.version>
 
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
